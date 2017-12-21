@@ -4,12 +4,6 @@ pipeline {
     }
     stages {
         stage('Build') {
-            agent { 
-	            docker {
-	            image 'maven:3.5-alpine' 
-	            label 'linux'
-	            }
-            }
             steps {
                 sh 'mvn clean package'
                 junit '**/target/surefire-reports/TEST-*.xml'
